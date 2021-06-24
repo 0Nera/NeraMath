@@ -10,7 +10,7 @@ void process_op(char op, int *x, int *y) {
 	} else if (op == '*') {
 		*x *= *y; *y = 0;
 	} else if (op == '/') {
-		if (*x != 0 || *y != 0) {
+		if (*x != 0 && *y != 0) {
 			*x /= *y; *y = 0;
 		} else {
 			printf("%s\n",ZERO_DIVISION);
@@ -51,7 +51,7 @@ int eval_expr(char *inp){
 int main(int argc, char *argv[]){
 	printf("Argc = %d, argv[1] = %s\n", argc, argv[1]);
 	//Входные данные
-	char input_text[255];
+	char input_text[30000];
 	
 	//Сигнал выхода
 	int exit_signal = 0;
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]){
 	if(argc == 2){
 		exit_signal = 1;
 		FILE *fin;
-		char file_str[255];
+		char file_str[30000];
 		char *estr;
 		fin = fopen (argv[1],"r");
 		if (fin == NULL) {
